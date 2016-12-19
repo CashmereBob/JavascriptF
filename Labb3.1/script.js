@@ -36,6 +36,7 @@ $('#button').on('click', function(e){
     for (var i = 0 ; i < MyApp.users.length; i++){
         $('#textOutput').html($('#textOutput').html() + "<br />" + MyApp.users[i].name());
     }
+    
 });
 
 
