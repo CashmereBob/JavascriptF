@@ -54,6 +54,9 @@ usersTwo = [
 
 $(document).ready(function(e){
 
+    var listOneHTML = "";
+    var listTwoHTHL = "";
+
     $.each(usersOne, function(key, value){
         value.name = function (){return this.firstname + " " + this.lastname};
     });
@@ -63,12 +66,15 @@ $(document).ready(function(e){
     });
 
     $.each(usersOne, function(key, value){
-        $('#listOne').append('<li>' + value.name() + '</li>')
+        listOneHTML += '<li>' + value.name() + '</li>';
     });
 
     $.each(usersTwo, function(key, value){
-        $('#listTwo').append('<li>' + value.name() + '</li>');
+        listTwoHTHL += '<li>' + value.name() + '</li>';
     });
+
+    $('#listOne').html(listOneHTML);
+    $('#listTwo').html(listTwoHTHL);
 
 $('#fadeIn').click(function(e){
     $('#content').fadeIn();
