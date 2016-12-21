@@ -1,0 +1,18 @@
+<doctype html>
+    <html data-ng-app="">
+        <head>
+            <title>Labb 4.3.2</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            
+        </head>
+        <body>
+            <div class="container" data-ng-init="students=[{name: 'Andreas', ort: 'Helsingborg', tel: '12345' }, {name: 'Jonny', ort: 'Ystad', tel: '12345'},{name: 'Ali', ort: 'Stockholm', tel: '12345'}]">
+                Filter: <input type="text" data-ng-model="filterList"/>
+                <ul>
+                    <li data-ng-repeat="student in students | filter: filterList">
+                        {{student.name}} - {{student.ort}} - {{student.tel}}
+                        </li>
+                </ul>
+            </div>
+        </body>
+    </html>
