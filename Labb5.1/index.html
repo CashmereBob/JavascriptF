@@ -1,0 +1,29 @@
+<doctype html>
+    <html lang="se" data-ng-app="App">
+        <head>
+            <title>Labb 5.1</title>
+            <meta charset="UTF-8">
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            <script src="scripts/script.js"></script>
+        </head>
+        <body>
+            <div data-ng-controller="schoolController">   
+                <button data-ng-click="studenter=false">Studenter</button>
+                <button data-ng-click="studenter=true">Utbildningar</button>
+
+                <div id="wrapper">
+                    <div ng-hide="studenter">
+                        <ul>
+                            <li data-ng-repeat="person in persons | orderBy: 'name'">{{person.name}} - {{person.status}} - {{person.utbildning}}</li>
+                        </ul>
+                    </div>
+                    <div ng-show="studenter" >
+                        <ul>
+                            <li data-ng-repeat="utbildning in utbildningar | orderBy: 'name'">{{utbildning.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </body>
+    </html>
