@@ -1,0 +1,57 @@
+<doctype html>
+    <html lang="se" data-ng-app="App">
+        <head>
+            <title>Labb 5.3</title>
+            <meta charset="UTF-8">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            <script src="scripts/script.js"></script>
+        </head>
+        <body>
+            <div data-ng-controller="schoolController">   
+                <button data-ng-click="studenter=false">Studenter</button>
+                <button data-ng-click="studenter=true">Utbildningar</button>
+                <button data-ng-click="addStudent=true">Add student to Database.</button>
+                <div ng-show="addStudent">
+                    Name: <input type="text" data-ng-model="newPersonName">
+                    <br>
+                    Utbildning: <select data-ng-model="newPersonUtbildning">
+                        <option data-ng-repeat="utbildning in utbildningar | orderBy: 'name'" value="{{utbildning.name}}">{{utbildning.name}}</option>
+                    </select>
+                    <br>
+                    Aktiv: <input type="checkbox" data-ng-model="newPersonAktiv">
+                    <br>
+                    <button data-ng-click="AddPerson();">Add Person</button>
+                <div id="error" style="color: red;"></div>
+                </div>
+
+                <div id="search">
+                    <input type="text" data-ng-model="searchPersonName">
+                    <button data-ng-click="SearchPerson();">Sök</button>
+                    <br>
+                    Filter: <input type="text" data-ng-model="filterList"/>
+                    <br>
+                    <button data-ng-click="GetLocaLStorage();">Repeat Last Search</button>
+                </div>
+
+                <div id="wrapper">
+                    <div>
+                        <ul>
+                            <li data-ng-repeat="personS in searchResult | orderBy: 'name' | filter: filterList">{{personS.name}} - {{personS.status}} - {{personS.utbildning}}</li>
+                        </ul>
+                    </div>
+                    <div ng-hide="studenter">
+                        <ul>
+                            <li data-ng-repeat="person in persons | orderBy: 'name'">{{person.name}} - {{person.status}} - {{person.utbildning}}</li>
+                        </ul>
+                    </div>
+                    <div ng-show="studenter" >
+                        <ul>
+                            <li data-ng-repeat="utbildning in utbildningar | orderBy: 'name'">{{utbildning.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </body>
+    </html>
