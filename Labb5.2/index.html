@@ -4,6 +4,7 @@
             <title>Labb 5.1</title>
             <meta charset="UTF-8">
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
             <script src="scripts/script.js"></script>
         </head>
         <body>
@@ -20,7 +21,8 @@
                     <br>
                     Aktiv: <input type="checkbox" data-ng-model="newPersonAktiv">
                     <br>
-                    <button data-ng-click="AddPerson(); addStudent=false">Add Person</button>
+                    <button data-ng-click="AddPerson();">Add Person</button>
+                <div id="error" style="color: red;"></div>
                 </div>
                 <div id="wrapper">
                     <div ng-hide="studenter">

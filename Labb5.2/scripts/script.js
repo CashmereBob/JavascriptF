@@ -106,6 +106,26 @@ App.factory("schoolFactory", function(){
 
     var factory = {};
 
+    factory.CheckStudent = function (name){
+        var dfd = $.Deferred();
+        var bool = true;
+
+        $.each(persons, function(key, value){
+            if (value.name == name){
+                bool = false;
+            }
+        });
+
+        if (bool){
+            dfd.resolve();
+        } else {
+            dfd.reject();
+        }
+
+        return dfd.promise();
+    };
+
+
     factory.getPersons = function(){
         return persons;
     };
@@ -115,8 +135,8 @@ App.factory("schoolFactory", function(){
     };
 
     factory.AddPersonToArray = function(person){
-        persons.push(person);
-    }
+                persons.push(person);
+    };
 
     return factory;
 });
@@ -127,8 +147,15 @@ controllers.schoolController = function($scope, schoolFactory){
     $scope.utbildningar = schoolFactory.getUtbildningar();
     $scope.persons = schoolFactory.getPersons();
     $scope.AddPerson = function(){
-        schoolFactory.AddPersonToArray({name: $scope.newPersonName, utbildning:$scope.newPersonUtbildning, status: $scope.newPersonAktiv })
-    }
+        schoolFactory.CheckStudent($scope.newPersonName).then(
+            function(){
+                schoolFactory.AddPersonToArray({name: $scope.newPersonName, utbildning:$scope.newPersonUtbildning, status: $scope.newPersonAktiv })
+                $('#error').html("Studenten inlagd").css('color', 'green');
+            },
+            function(){
+                $('#error').html("Studenten finns redan").css('color', 'red');
+            }
+        )};
 };
 
 App.controller(controllers);
