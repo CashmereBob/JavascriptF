@@ -5,7 +5,7 @@ App.factory("mediaFactory", function($q){
     var users = [
         {
             name: "Janne",
-            username: "MegaJanne2K16",
+            username: "user",
             password: "password"
         },
         {
@@ -75,17 +75,29 @@ App.factory("mediaFactory", function($q){
 
     var factory = {};
 
-    factory.GetAllUsers = function(){
-        return users;
-    };
-
     factory.GetAllMovies = function(){
         return movies;
     };
 
-    factory.GetLoggedInUser = function(){
-        return sessionStorage.getItem("user");
+    factory.ValidateLogin = function(username, password) {
+        var q = $q.defer();
+        var user = {};
+        angular.forEach(users, function(value, key){
+            if (value.username == username && value.password == password){
+                user = value;
+            };
+        });
+
+        if (angular.equals(user, {})){
+            q.reject('The combination of user and password did not match. Please try again!');
+        } else {
+            q.resolve(user.name);
+        }
+        
+        return q.promise;
+
     };
+
 
     return factory;
 
@@ -93,8 +105,27 @@ App.factory("mediaFactory", function($q){
 
 var controllers = {};
 
-controllers.mediaLibraryController = function($scope, $q, $window, mediaFactory){
+controllers.mediaLibraryController = function($scope, $q, $location, mediaFactory){
     $scope.AllMovies = mediaFactory.GetAllMovies();
+    $scope.Login = function() {
+
+    mediaFactory.ValidateLogin($scope.loginUsername, $scope.loginPassword).then(
+        function(username){
+            sessionStorage.removeItem('user');
+            sessionStorage.user = username;
+            window.location.href = 'library.html';
+        }, 
+        function(error){
+            $scope.error = error;
+        });
+    };
+
+    $scope.LoggedIn = function(){
+        console.log(sessionStorage.user);
+        $scope.user = sessionStorage.user;
+    
+    };
+
 
 };
 

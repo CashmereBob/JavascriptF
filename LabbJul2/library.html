@@ -1,0 +1,20 @@
+<doctype html>
+    <html lang="se" data-ng-app="App">
+        <head>
+            <meta charset="UTF-8"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            <script src="scripts/script.js"></script>
+        </head>
+        <body>
+            <div data-ng-controller="mediaLibraryController" data-ng-init="LoggedIn()">
+                <h2>Logged in as: {{user}}</h2>
+                <h3>Filter</h3>
+                <input type="text" data-ng-model="filterList">
+                <ul>
+                    <li data-ng-repeat="film in AllMovies | filter: filterList | orderBy: 'title'">
+                        {{film.title}} - {{film.year}}
+                    </li>
+                </ul>
+            </div>
+        </body>
+    </html>
