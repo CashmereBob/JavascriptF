@@ -99,9 +99,6 @@ App.factory("schoolFactory", function(){
             status: true,
             utbildning: "Djurskötare"
         },
-
-        
-
     ]
 
     var personsSearch = [];
