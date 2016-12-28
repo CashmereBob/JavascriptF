@@ -1,0 +1,19 @@
+<doctype html>
+    <html lang="se" data-ng-app="App">
+        <head>
+            <meta charset="UTF-8">
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+            <script src="scripts/script.js"></script>
+        </head>
+        <body>
+            <div data-ng-controller="mediaLibraryController" data-ng-init="StoredUser()">
+                <input type="text" placeholder="username" data-ng-model="loginUsername"/>
+                <input type="password" placeholder="password" data-ng-model="loginPassword"/>
+                <br>
+                Remember me:<input type="checkbox" data-ng-model="loginRemember"/>
+                <br>
+                <button data-ng-click="Login()">Login</button>
+                <p>{{error}}</p>
+            </div>
+        </body>
+    </html>

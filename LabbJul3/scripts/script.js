@@ -97,7 +97,25 @@ App.factory("mediaFactory", function($q){
         return q.promise;
 
     };
-    
+
+    factory.GetRememberdUser = function() {
+        var q = $q.defer();
+        var user = {};
+        angular.forEach(users, function(value, key){
+            if (value.username == localStorage.rememberUser){
+                user = value;
+            }
+        });
+        
+        if(angular.equals(user, {})){
+            q.reject();
+        } else {
+            q.resolve(user);
+        };
+
+        return q.promise;
+    };
+
 
     return factory;
 
@@ -113,6 +131,13 @@ controllers.mediaLibraryController = function($scope, $q, $location, mediaFactor
         function(username){
             sessionStorage.removeItem('user');
             sessionStorage.user = username;
+
+            if($scope.loginRemember){
+                localStorage.rememberUser = $scope.loginUsername;
+            } else {
+                localStorage.removeItem('rememberUser');
+            }
+
             window.location.href = 'library.html';
         }, 
         function(error){
@@ -121,11 +146,19 @@ controllers.mediaLibraryController = function($scope, $q, $location, mediaFactor
     };
 
     $scope.LoggedIn = function(){
-        console.log(sessionStorage.user);
         $scope.user = sessionStorage.user;
-    
     };
 
+    $scope.StoredUser = function() {
+        mediaFactory.GetRememberdUser().then(function(user){
+            $scope.loginUsername = user.username;
+            $scope.loginPassword = user.password;
+            $scope.loginRemember = true;
+        }, function(){
+            console.log("failed fetching rememberd user!");
+        });
+
+    };
 
 };
 
