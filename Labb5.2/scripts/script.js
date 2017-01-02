@@ -107,10 +107,10 @@ App.factory("schoolFactory", function(){
     var factory = {};
 
     factory.CheckStudent = function (name){
-        var dfd = $.Deferred();
+        var dfd = angular.element.Deferred();
         var bool = true;
 
-        $.each(persons, function(key, value){
+        angular.element.each(persons, function(key, value){
             if (value.name == name){
                 bool = false;
             }
@@ -150,10 +150,10 @@ controllers.schoolController = function($scope, schoolFactory){
         schoolFactory.CheckStudent($scope.newPersonName).then(
             function(){
                 schoolFactory.AddPersonToArray({name: $scope.newPersonName, utbildning:$scope.newPersonUtbildning, status: $scope.newPersonAktiv })
-                $('#error').html("Studenten inlagd").css('color', 'green');
+                angular.element('#error').html("Studenten inlagd").css('color', 'green');
             },
             function(){
-                $('#error').html("Studenten finns redan").css('color', 'red');
+                angular.element('#error').html("Studenten finns redan").css('color', 'red');
             }
         )};
 };
