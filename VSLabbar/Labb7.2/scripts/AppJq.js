@@ -13,3 +13,4 @@ function HideBookTable() {
     $('#mediaTable').show();
     $('#bookTable').hide();
 }
+//# sourceMappingURL=AppJq.js.map

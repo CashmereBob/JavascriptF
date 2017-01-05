@@ -65,17 +65,17 @@ class Media {
         this.dvds = [];
         this.games = [];
 
-        this.AddBookToLibrary(new Book("Forfattare1", "Boktitel1", "Bokkategori1", "100", "B1", "2001"));
-        this.AddBookToLibrary(new Book("Forfattare2", "Boktitel2", "Bokkategori2", "200", "B2", "2002"));
-        this.AddBookToLibrary(new Book("Forfattare3", "Boktitel3", "Bokkategori3", "300", "B3", "2003"));
+        this.AddBookToLibrary(new Book("Nora Roberts", "Förföljaren", "Deckare", "189", "9789100167332", "2016"));
+        this.AddBookToLibrary(new Book("Trädens hemliga liv", "Trädens hemliga liv", "Djur & Natur", "204", "9789113073590", "2016"));
+        this.AddBookToLibrary(new Book("Steve Krug", "Don't Make Me Think, Revisited", "IT", "332", "9780321965516", "2014"));
 
-        this.AddDvdToLibrary(new Dvd("Regisör1", "Filmtitel1", "Filmkategori1", "100", "D1"));
-        this.AddDvdToLibrary(new Dvd("Regisör2", "Filmtitel2", "Filmkategori2", "200", "D2"));
-        this.AddDvdToLibrary(new Dvd("Regisör3", "Filmtitel3", "Filmkategori3", "300", "D3"));
+        this.AddDvdToLibrary(new Dvd("George Lucas", "Star Wars: The Complete Saga", "Science Fiction", "499", "2011012"));
+        this.AddDvdToLibrary(new Dvd("Frank Darabont", "Nyckeln till frihet", "Crime", "250", "1749968"));
+        this.AddDvdToLibrary(new Dvd("David Fincher", "Fight Club", "Drama", "199", "65428498"));
 
-        this.AddGameToLibrary(new Game("Utvecklare1", "Speltitel1", "Spelkategori1", "100", "D1"));
-        this.AddGameToLibrary(new Game("Utvecklare2", "Speltitel2", "Spelkategori2", "200", "D2"));
-        this.AddGameToLibrary(new Game("Utvecklare3", "Speltitel3", "Spelkategori3", "300", "D3"));
+        this.AddGameToLibrary(new Game("Dice", "Battlefield 1", "Shooter", "375", "237631"));
+        this.AddGameToLibrary(new Game("Blizzard North", "Diablo 2", "Action RPG", "369", "65184185"));
+        this.AddGameToLibrary(new Game("Nintendo", "Zelda: Orcarina of Time", "Adventure", "243", "1556142318"));
 
     }
 
