@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html ng-app="mediaApp">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="scripts/AppJq.js"></script>
+    <script src="scripts/Media.js"></script>
+    <script src="scripts/App.js"></script>
+</head>
+<body ng-controller="mediaAppController" ng-init="AllMedia()">
+    <button ng-click="AllMedia()">All media</button>
+    <button ng-click="AllBooks()">Books</button>
+    <button id="addBookButton">Add book</button>
+    <table id="mediaTable">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Article number</th>
+        </tr>
+        <tr ng-repeat="media in MediaArray | orderBy: 'name' ">
+            <td>{{media.name}}</td>
+            <td>{{media.category}}</td>
+            <td>{{media.price}} kr</td>
+            <td>{{media.articleNumber}}</td>
+        </tr>
+    </table>
+
+    <table id="bookTable">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Article number</th>
+            <th>Writer</th>
+            <th>Year</th>
+        </tr>
+        <tr ng-repeat="media in BookArray | orderBy: 'name' ">
+            <td>{{media.name}}</td>
+            <td>{{media.price}} kr</td>
+            <td>{{media.articleNumber}}</td>
+            <td>{{media.author}}</td>
+            <td>{{media.year}}</td>
+        </tr>
+    </table>
+
+    <div id="addBookDiv">
+        <input type="text" name="titel" value="" placeholder="Titel" ng-model="_name"/>
+        <input type="text" name="category" value="" placeholder="Category" ng-model="_category"/>
+        <input type="text" name="price" value="" placeholder="Price" ng-model="_price"/><br />
+        <input type="text" name="artNr" value="" placeholder="Art Nr" ng-model="_articleNumber"/>
+        <input type="text" name="author" value="" placeholder="Auther" ng-model="_author"/>
+        <input type="text" name="year" value="" placeholder="Year" ng-model="_year" /><br />
+        <button ng-click="AddBook()">Save</button>
+    </div>
+
+</body>
+</html>

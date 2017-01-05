@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="scripts/script.js"></script>
+</head>
+<body ng-app="valutaApp">
+    <div ng-controller="valutaAppController">
+        <input type="number" name="SEK" value="" placeholder="SEK" ng-model="sekField" ng-change="sekCalc()" />
+        <input type="number" name="EUR" value="" placeholder="EUR" ng-model="eurField" ng-change="eurCalc()"/>
+    </div>
+</body>
+</html>
